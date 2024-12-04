@@ -3,7 +3,7 @@ name: "lsinatopo"
 version: 0.0.0-placeholder
 author: Siemens AG
 # Description will be displayed in the apax extension
-description: <add your description here, which will be shown in the apax extension>
+description: Modify the topology of Sinamics S120 drives from the user program
 type: lib
 #URL to the repository
 repository:
@@ -14,6 +14,9 @@ targets:
   - "1500"
   - "llvm"
 
+keywords:
+  - library
+  
 # Registry information, to other npm-registries where Apax packages are located
 registries:
   '@simatic-ax': 'https://npm.pkg.github.com/'
@@ -35,5 +38,5 @@ files:
   - 'README.md'
   - 'LICENSE.md'
   - 'docs'
-  - 'src'
+  - 'bin'
   - 'snippets'

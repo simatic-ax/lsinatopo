@@ -1,9 +1,9 @@
 {
     "NamespaceSupport": {
     "scope": "javascript,typescript,st",
-    "prefix": ["CreateNamespace for <Library>"],
+    "prefix": ["CreateNamespace for LSinaTopo"],
     "body": [
-        "NAMESPACE Simatic.Ax.<Library>",
+        "NAMESPACE Simatic.Ax.LSinaTopo",
         "\t$0",
         "END_NAMESPACE"
     ],
