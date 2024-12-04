@@ -1,5 +1,5 @@
 # General information
-name: "lsinatopo"
+name: "@simatic-ax/lsinatopo"
 version: 0.0.0-placeholder
 author: Siemens AG
 # Description will be displayed in the apax extension
@@ -16,7 +16,7 @@ targets:
 
 keywords:
   - library
-  
+
 # Registry information, to other npm-registries where Apax packages are located
 registries:
   '@simatic-ax': 'https://npm.pkg.github.com/'
