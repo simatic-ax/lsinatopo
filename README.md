@@ -28,7 +28,6 @@ This library internally uses the library LAcycCom, which is used to handle the a
 
 Since this library contains a large number of functionalities that are functionally identical to the library in TIA Portal, detailed content of this library is not described here. For more information, please refer to the original documentation.
 
-
 ## Contribution
 
 Thanks for your interest in contributing. Anybody is free to report bugs, unclear documentation, and other problems regarding this repository in the Issues section or, even better, is free to propose any changes to this repository using Merge Requests.
