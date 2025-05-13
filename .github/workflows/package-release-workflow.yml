@@ -23,9 +23,12 @@ jobs:
 
           echo "Downloading from GitLab..."
           curl -v --fail \
-            --header "Authorization: Bearer $GITLAB_TOKEN" \
+            --header "JOB-TOKEN: ${{ github.event.client_payload.gitlab_job_token }}" \
             "https://code.siemens.com/api/v4/projects/${{ github.event.client_payload.gitlab_project_id }}/jobs/${{ github.event.client_payload.gitlab_job_id }}/artifacts" \
             -o artifacts.zip
+
+          echo "Downloaded file info:"
+          ls -l artifacts.zip
         env:
           GITLAB_TOKEN: ${{ secrets.GITLAB_TOKEN }}
       
