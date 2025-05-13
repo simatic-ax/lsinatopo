@@ -4,8 +4,6 @@ name: Process GitLab Artifacts
 on:
   repository_dispatch:
     types: [gitlab_artifacts_ready]
-    branches:
-        - 'setup-artifaction-consumption-from-gitlab' 
 
 jobs:
   process:
