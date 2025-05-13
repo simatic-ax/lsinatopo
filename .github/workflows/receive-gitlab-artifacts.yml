@@ -16,8 +16,3 @@ jobs:
           echo "Pipeline ID: ${{ github.event.client_payload.gitlab_pipeline_id }}"
           echo "Commit Ref: ${{ github.event.client_payload.gitlab_commit_ref }}"
           echo "Custom Branch: ${{ github.event.client_payload.custom_branch }}"
-
-      - name: Checkout this branch
-        uses: actions/checkout@v3
-        with:
-          ref: ${{ github.event.client_payload.custom_branch }}
