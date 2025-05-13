@@ -17,10 +17,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Download GitLab artifacts
+      - name: Download artifacts
         run: |
-          curl --header "PRIVATE-TOKEN: ${secrets.GITLAB_TOKEN}" \
-            "https://code.siemens.com/api/v4/projects/${{ github.event.client_payload.gitlab_project_id }}/jobs/artifacts/${{ github.event.client_payload.gitlab_commit_ref }}/download?job=build" \
+          curl --header "PRIVATE-TOKEN: $GITLAB_TOKEN" \
+            "https://code.siemens.com/api/v4/projects/401612/jobs/artifacts/deploy-to-github-community/download?job=build-and-test" \
             -o artifacts.zip
           unzip artifacts.zip
         env:
