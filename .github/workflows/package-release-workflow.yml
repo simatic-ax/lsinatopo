@@ -23,12 +23,15 @@ jobs:
           curl --fail --header "PRIVATE-TOKEN: $GITLAB_TOKEN" \
             "https://code.siemens.com/api/v4/projects/401612/jobs/artifacts/deploy-to-github-community/download?job=build-and-test" \
             -o artifacts.zip
-          ls -l artifacts.zip
-          file artifacts.zip
-          unzip artifacts.zip
         env:
           GITLAB_TOKEN: ${{ secrets.GITLAB_TOKEN }}
-        
+      
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: gitlab-artifacts
+          path: artifacts.zip
+          retention-days: 1
       - name: Process artifacts
         run: |
           # Hier deine Verarbeitung der Artifacts
