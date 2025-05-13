@@ -1,0 +1,32 @@
+# .github/workflows/process-artifacts.yml
+name: Process GitLab Artifacts
+
+on:
+  repository_dispatch:
+    types: [gitlab_artifacts_ready]
+
+jobs:
+  receive-binaries-from-gitlab:
+    runs-on: ubuntu-24.04
+    container:
+      image: ghcr.io/simatic-ax/ci-images/apax-ci-image:3.5.0
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Download GitLab artifacts
+        run: |
+          curl --header "PRIVATE-TOKEN: ${secrets.GITLAB_TOKEN}" \
+            "https://code.siemens.com/api/v4/projects/${{ github.event.client_payload.gitlab_project_id }}/jobs/artifacts/${{ github.event.client_payload.gitlab_commit_ref }}/download?job=build" \
+            -o artifacts.zip
+          unzip artifacts.zip
+        env:
+          GITLAB_TOKEN: ${{ secrets.GITLAB_TOKEN }}
+
+      - name: Process artifacts
+        run: |
+          # Hier deine Verarbeitung der Artifacts
+          ls -la bin/
