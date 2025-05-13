@@ -17,13 +17,20 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Download and extract artifacts
+      - name: Download and check artifacts
         run: |
           apt-get update && apt-get install -y unzip curl
-          curl --fail --header "PRIVATE-TOKEN: $GITLAB_TOKEN" \
+
+          echo "Downloading from GitLab..."
+          curl -v --fail --header "PRIVATE-TOKEN: $GITLAB_TOKEN" \
             "https://code.siemens.com/api/v4/projects/${{ github.event.client_payload.gitlab_project_id }}/jobs/${{ github.event.client_payload.gitlab_job_id }}/artifacts" \
             -o artifacts.zip
-          unzip artifacts.zip
+
+          echo "Downloaded file info:"
+          ls -l artifacts.zip
+
+          echo "File content (first 100 bytes):"
+          head -c 100 artifacts.zip | hexdump -C
         env:
           GITLAB_TOKEN: ${{ secrets.GITLAB_TOKEN }}
       
