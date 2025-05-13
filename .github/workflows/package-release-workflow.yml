@@ -29,8 +29,8 @@ jobs:
           echo "Downloaded file info:"
           ls -l artifacts.zip
 
-          echo "File content (first 100 bytes):"
-          head -c 100 artifacts.zip | hexdump -C
+          echo "File content (first 5 lines):"
+          head -n 5 artifacts.zip
         env:
           GITLAB_TOKEN: ${{ secrets.GITLAB_TOKEN }}
       
