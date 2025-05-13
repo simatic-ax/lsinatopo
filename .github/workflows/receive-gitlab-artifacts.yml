@@ -1,27 +1,23 @@
-# .github/workflows/process-artifacts.yml
-name: Process GitLab Artifacts
+name: Dispatch Test
 
 on:
   repository_dispatch:
     types: [gitlab_artifacts_ready]
 
 jobs:
-  process:
+  debug:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Print Payload
+        run: |
+          echo "Payload received:"
+          echo "Project ID: ${{ github.event.client_payload.gitlab_project_id }}"
+          echo "Job ID: ${{ github.event.client_payload.gitlab_job_id }}"
+          echo "Pipeline ID: ${{ github.event.client_payload.gitlab_pipeline_id }}"
+          echo "Commit Ref: ${{ github.event.client_payload.gitlab_commit_ref }}"
+          echo "Custom Branch: ${{ github.event.client_payload.custom_branch }}"
+
+      - name: Checkout this branch
         uses: actions/checkout@v3
-
-      - name: Download GitLab artifacts
-        run: |
-          curl --header "PRIVATE-TOKEN: ${secrets.GITLAB_TOKEN}" \
-            "https://code.siemens.com/api/v4/projects/${{ github.event.client_payload.gitlab_project_id }}/jobs/artifacts/${{ github.event.client_payload.gitlab_commit_ref }}/download?job=build" \
-            -o artifacts.zip
-          unzip artifacts.zip
-        env:
-          GITLAB_TOKEN: ${{ secrets.GITLAB_TOKEN }}
-
-      - name: Process artifacts
-        run: |
-          # Hier deine Verarbeitung der Artifacts
-          ls -la bin/
+        with:
+          ref: ${{ github.event.client_payload.custom_branch }}
