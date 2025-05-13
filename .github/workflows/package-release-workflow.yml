@@ -27,6 +27,7 @@ jobs:
       
       - name: Extract files
         run: |
+          ls -la
           which unzip || apt-get update && apt-get install -y unzip
           unzip artifacts.zip
         
