@@ -3,7 +3,7 @@
 
 ## Description
 
-This library contains function blocks to read, write and modify the topology of a Siemens SINAMICS S120 drive system from a SIMATIC S7-1500 runtime.  It is a direct conversion of the functionally identical library LSinaTopo for use inside the TIA Portal.
+This library contains function blocks to read, write and modify the topology of a Siemens SINAMICS S120 drive system from a SIMATIC S7-1500 runtime.  It is a direct conversion of the functionally identical library LSinaTopo for use inside the TIA Portal
 
 [https://support.industry.siemens.com/cs/document/109770003/](https://support.industry.siemens.com/cs/document/109770003/simatic-library-lsinatopo-sinamics-topology-modifications-at-runtime)
 
@@ -27,6 +27,7 @@ Using Simatic.Ax.lsinatopo;
 This library internally uses the library LAcycCom, which is used to handle the acyclic communication. Since the library LSinaTopo is delivered as a binary library, the library LAcycCom is built-in into the library LSinaTopo. Therefore, if you use this library and wish to also use the library LAcycCom, you should not add the library LAcycCom to your project separately, since this would lead to the library being in your project twice, leading to compile errors.
 
 Since this library contains a large number of functionalities that are functionally identical to the library in TIA Portal, detailed content of this library is not described here. For more information, please refer to the original documentation.
+
 
 ## Contribution
 
