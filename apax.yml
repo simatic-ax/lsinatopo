@@ -1,4 +1,3 @@
-# General information
 name: "@simatic-ax/lsinatopo"
 version: 0.0.0-placeholder
 author: Siemens AG
@@ -9,34 +8,28 @@ type: lib
 repository:
   type: git
   url: https://github.com/simatic-ax/lsinatopo
-# Targets which will be compiled with 'apax build'
-targets:
-  - "1500"
-  - "llvm"
 
 keywords:
   - library
-
-# Registry information, to other npm-registries where Apax packages are located
-registries:
-  '@simatic-ax': 'https://npm.pkg.github.com/'
-# Install settings
-installStrategy: strict
-apaxVersion: 3.2.1
-# Dependencies
-devDependencies:
-  '@ax/sdk': 2405.0.0
-  "@simatic-ax/snippetscollection": 1.0.0
-
-# Project variables
+targets:
+  - '1500'
+  - 'llvm'
 variables:
   APAX_BUILD_ARGS:
-    - '--debug'
-
-# Files, which will be shipped with the library
+    - "--debug" # Generate debug information for target "1500"
 files:
   - 'README.md'
-  - 'LICENSE.md'
-  - 'docs'
   - 'bin'
-  - 'snippets'
+
+dependencies:
+  "@ax/system-serde": 10.3.25
+  "@simatic-ax/lacyccom": 4.0.1
+
+devDependencies:
+  "@ax/sdk": 2510.9.0
+
+registries:
+  '@simatic-ax': 'https://npm.pkg.github.com/'
+
+installStrategy: strict
+apaxVersion: 3.1.1
